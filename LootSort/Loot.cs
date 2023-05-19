@@ -45,7 +45,7 @@ namespace LootSort
                 }
                 else
                 {
-                    return (other.Value - Value);
+                    return (int)(other.Value - Value);
                 }
             }
             else
@@ -53,6 +53,23 @@ namespace LootSort
                 return (string.Compare(Kind.ToString(), other.Kind.ToString()));
             }
         }
+
+        public override int GetHashCode()
+        {
+            return  Kind.GetHashCode() 
+                    ^ Value.GetHashCode() 
+                    ^ Description.GetHashCode();
+        }
+
+        public override bool Equals(object other)
+        {
+            return Kind.Equals((other as Loot).Kind)
+                    &&
+                    Kind.Equals((other as Loot).Kind)
+                    &&
+                    Description.Equals((other as Loot).Description);
+        }
+
         /// <summary>
         /// Return a nicely formatted string representing the loot instance.
         /// </summary>

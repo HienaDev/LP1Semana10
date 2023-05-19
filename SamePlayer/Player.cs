@@ -24,7 +24,9 @@ namespace SamePlayer
         public override bool Equals(object other)
         {
             
-            return Type.Equals((other as Player).Type) && Name.Equals((other as Player).Name);
+            return Type.Equals((other as Player).Type) 
+                    && 
+                    Name.Equals((other as Player).Name);
         }
     }
 }
