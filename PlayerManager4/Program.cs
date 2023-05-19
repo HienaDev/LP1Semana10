@@ -9,6 +9,7 @@ namespace PlayerManager4
         /// The list of all players.
         /// </summary>
         private List<Player> playerList;
+        IComparer<Player> comp = new CompareByName();
 
         /// <summary>
         /// Program begins here.
@@ -32,7 +33,10 @@ namespace PlayerManager4
             // initialization syntax
             playerList = new List<Player>() {
                 new Player("Best player ever", 100),
-                new Player("An even better player", 500)
+                new Player("An even better player", 500),
+                new Player("Zebra", 300),
+                new Player("Koala", 200),
+                new Player("Joker", 10)
             };
         }
 
@@ -44,7 +48,9 @@ namespace PlayerManager4
             // We keep the user's option here
             string option;
 
-            playerList.Sort(new CompareByName(false));
+            
+
+            playerList.Sort();
             // Main program loop
             do
             {
@@ -67,6 +73,18 @@ namespace PlayerManager4
                         break;
                     case "4":
                         Console.WriteLine("Bye!");
+                        break;
+                    case "5":
+                        comp = new CompareByName();
+                        playerList.Sort(comp);
+                        break;
+                    case "6":
+                        comp = new CompareByName(true);
+                        playerList.Sort(comp);
+                        break;
+                    case "7":
+                        comp = new CompareByName(false);
+                        playerList.Sort(comp);
                         break;
                     default:
                         Console.Error.WriteLine("\n>>> Unknown option! <<<\n");
@@ -118,7 +136,7 @@ namespace PlayerManager4
             newPlayer = new Player(name, score);
             playerList.Add(newPlayer);
 
-            playerList.Sort(new CompareByName(false));
+            playerList.Sort(comp);
         }
 
         /// <summary>
