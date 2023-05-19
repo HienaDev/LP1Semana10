@@ -9,12 +9,6 @@ namespace PlayerManager4
     {
 
         private bool ascend;
-        private bool score = false;
-
-        public CompareByName()
-        {
-            score = true;
-        }
 
         public CompareByName(bool ascend)
         {
@@ -23,9 +17,15 @@ namespace PlayerManager4
 
         public int Compare(Player x, Player y)
         {
-            if (score)
+            if (ascend)
             {
-                
+                return (IComparer<string>);
+            }
+            else if (!ascend)
+            {
+                int comparsion = Compare(x.Name, y.Name);
+
+                return comparsion;
             }
         }
 
