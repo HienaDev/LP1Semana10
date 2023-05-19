@@ -44,7 +44,7 @@ namespace PlayerManager4
             // We keep the user's option here
             string option;
 
-            playerList.Sort();
+            playerList.Sort(new CompareByName(false));
             // Main program loop
             do
             {
@@ -118,7 +118,7 @@ namespace PlayerManager4
             newPlayer = new Player(name, score);
             playerList.Add(newPlayer);
 
-            playerList.Sort();
+            playerList.Sort(new CompareByName(false));
         }
 
         /// <summary>
